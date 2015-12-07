@@ -8,10 +8,7 @@ import java.util.Scanner;
 public class nim {
     private static Scanner input = new Scanner(System.in);
 
-    private static final int
-            MAX_STEALS = 2,
-            PC_REMAINDER_ZERO = 2,
-            PC_REMAINDER_ELSE = 1;
+    private static final int MAX_STEALS = 2;
     private static final String
             PLAYER_PERSON = "Player",
             PLAYER_PC = "Computer";
@@ -30,10 +27,11 @@ public class nim {
     }
 
     private static void playFirstPrompt() {
-        String playFirst;
+        String playFirst, playPrompt;
 
         System.out.print("\nWould you like to go first? (y/n) ");
-        playFirst = input.next();
+        playPrompt = input.next();
+        playFirst = playPrompt.substring(0, 1);
 
         if (playFirst.equalsIgnoreCase("y")) {
             playerTurn();
@@ -48,10 +46,11 @@ public class nim {
     }
 
     private static void playAgainPrompt() {
-        String playAgain;
+        String playAgain, playPrompt;
 
         System.out.print("\nWould you like to play again? (y/n) ");
-        playAgain = input.next();
+        playPrompt = input.next();
+        playAgain = playPrompt.substring(0, 1);
 
         if (playAgain.equalsIgnoreCase("y")) {
             introduction();
@@ -85,7 +84,7 @@ public class nim {
         System.out.print("How many stones would you like to remove? [1-2] ");
         player_stones_drawn = input.nextInt();
 
-        if (player_stones_drawn < 0) {
+        if (player_stones_drawn <= 0) {
             System.out.println("You must remove a stone!");
             playerTurn();
         }
